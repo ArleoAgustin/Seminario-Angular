@@ -5,4 +5,5 @@ export interface Vianda {
     price: number;
     image: string;
     offer: boolean;
+    quantity:number;
 }

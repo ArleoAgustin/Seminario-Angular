@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Vianda } from './viandas';
+import { Vianda } from './Viandas';
 
 @Component({
   selector: 'app-viandas-list',
@@ -15,6 +15,7 @@ export class ViandasListComponent implements OnInit {
     "price": 700,
     "image": "assets/img/milanesa.jpg",
     "offer": false,
+    "quantity": 0,
   },
   {
     "food":"Papas",
@@ -22,6 +23,7 @@ export class ViandasListComponent implements OnInit {
     "price": 300,
     "image": "assets/img/milanesa.jpg",
     "offer": false,
+    "quantity": 0,
   },
   {
     "food":"Pizza especial",
@@ -29,6 +31,7 @@ export class ViandasListComponent implements OnInit {
     "price": 1200,
     "image": "assets/img/milanesa.jpg",
     "offer": true,
+    "quantity": 0,
   }
 ];
 
@@ -37,4 +40,13 @@ export class ViandasListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  upQuantity(vianda: Vianda): void{
+    vianda.quantity++;
+  }
+
+  
+  downQuantity(vianda: Vianda): void{
+    if(vianda.quantity > 0)
+    vianda.quantity--;
+  }
 }

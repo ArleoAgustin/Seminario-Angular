@@ -5,6 +5,7 @@
             <th>Comida</th>
             <th>Contenido</th>
             <th>Precio</th>
+            <th>Compra</th>
         </tr>
     </thead>
     <tbody>
@@ -12,7 +13,13 @@
             <td> <img [src]="vianda.image" [alt]="vianda.food" class="imgVianda"> </td>
             <td>{{vianda.food}}</td>
             <td>{{vianda.content}}</td>
-            <td>{{vianda.price | currency}}</td> 
+            <td>{{vianda.price | currency}}</td>
+            <td>
+                <button class="btn btn-primary btn-sm" (click)="downQuantity(vianda)">-</button>
+                <input type="text" [(ngModel)]="vianda.quantity">
+                <button class="btn btn-primary btn-sm" (click)="upQuantity(vianda)">+</button>
+                {{vianda.quantity}}
+            </td>
         </tr>
 
     </tbody>
