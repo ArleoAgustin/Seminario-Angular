@@ -1,24 +1,28 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Imagen</th>
             <th>Comida</th>
             <th>Contenido</th>
             <th>Precio</th>
-            <th>Compra</th>
+            <th>Cantidad</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let vianda of viandas" [ngClass]="{'offer': vianda.offer}">
-            <td> <img [src]="vianda.image" [alt]="vianda.food" class="imgVianda"> </td>
-            <td>{{vianda.food}}</td>
-            <td>{{vianda.content}}</td>
-            <td>{{vianda.price | currency}}</td>
             <td>
-                <button class="btn btn-primary btn-sm" (click)="downQuantity(vianda)">-</button>
-                <input type="text" [(ngModel)]="vianda.quantity">
-                <button class="btn btn-primary btn-sm" (click)="upQuantity(vianda)">+</button>
-                {{vianda.quantity}}
+
+                 <img [src]="vianda.image" [alt]="vianda.food" class="imgVianda">
+                 
+                <div class="nameFood">
+                     {{vianda.food}}
+                </div>    
+            </td>
+            <td>{{vianda.content}}</td>
+            <td *ngIf="!vianda.offer">{{vianda.price | currency}}</td>
+            <td *ngIf="vianda.offer">{{vianda.priceOffer | currency}}</td>
+            <td>
+                <app-input-integer [vianda]="vianda"></app-input-integer>
+                <button class="btn" (click)="addViandaToCart(vianda)">Agregar</button>
             </td>
         </tr>
 

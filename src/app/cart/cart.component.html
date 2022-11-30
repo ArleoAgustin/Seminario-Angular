@@ -1,1 +1,27 @@
-<h3>Carrito de compras</h3>
+<h3>Resumen del pedido</h3>
+
+<table class="table" *ngIf="estaVacio(); else mensaje">
+    <thead>
+        <tr>
+            <th>Pedido</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+        </tr>
+       
+    </thead>
+    <tbody>
+        <tr *ngFor="let vianda of (viandasInCart$ | async) ">
+            <td>{{vianda.food}}</td>
+            <td>{{vianda.quantity}}</td>
+            <td *ngIf="!vianda.offer">{{vianda.quantity * vianda.price  | currency}} </td>
+            <td *ngIf="vianda.offer">{{vianda.quantity * vianda.priceOffer  | currency}} </td>
+            <td><button (click)="removeVianda(vianda)"></button></td>
+        </tr>
+    </tbody>
+    <h4 >Total del pedido: {{total}}</h4>
+</table>
+
+
+<ng-template #mensaje>
+    <h4>El carrito está vacío</h4>
+</ng-template>

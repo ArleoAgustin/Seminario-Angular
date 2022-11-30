@@ -9,7 +9,6 @@ export class MyVianditaViandasComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

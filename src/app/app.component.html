@@ -1,26 +1,32 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{title}}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      
+
+
+       <!--
       <div class="navbar-nav">
         
         <a class="nav-link active" aria-current="page" [routerLink]="['/']">Viandas</a>
         <a class="nav-link" [routerLink]="['/about']">Contacto</a>
-      
-      </div>
-    </div>
-  </div>
-</nav>
+      -->
 
-<div>
-  <h1>{{title}}</h1>
-</div>
+    <header>
+
+      <h1 class="titulo">{{title}}</h1>
+ 
+    </header>
+
+      <nav>
+        <div class="menu">
+            <a [routerLink]="['/home']" class="item">Home</a>
+            <a [routerLink]="['/viandas']" class="item">Viandas</a>
+            <a [routerLink]="['/promotions']" class="item">Promociones </a>
+            <a [routerLink]="['/contact']"  class="item">Contacto</a>
+            <a [routerLink]="['/about']"  class="item">Sobre Mi Viandita</a>
+        </div>
+    </nav>
+
 
 <div class="container">
   <router-outlet></router-outlet>
 </div>
-<footer></footer>
+<footer>
+  <a> © Mi Viandita 2022. Todos los derechos reservados.</a>
+</footer>
