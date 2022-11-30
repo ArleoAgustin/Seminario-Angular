@@ -1,10 +1,8 @@
 import { Component, OnInit, ɵisListLikeIterable } from '@angular/core';
 import { Vianda } from '../viandas-list/Viandas';
-import { MyVianditaViandasComponent } from '../my-viandita-viandas/my-viandita-viandas.component';
-import { ViandasListComponent } from '../viandas-list/viandas-list.component';
 import { ViandaCartService } from '../vianda-cart.service';
-import { isEmpty, Observable, observable } from 'rxjs';
-import { NumberSymbol } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-cart',
@@ -14,38 +12,30 @@ import { NumberSymbol } from '@angular/common';
 
 export class CartComponent  implements OnInit {
 
-  viandasInCart$: Observable<Vianda[]>;
-  haveProd:boolean = false;
-  viandas: Vianda[] = [];
-  total: number;
+  viandasInCart: Vianda[] =[];
 
   constructor(private cart: ViandaCartService) {
-    
-    this.total = 0;
-    this.viandasInCart$ = cart.listCart.asObservable();
-    this.viandasInCart$.subscribe(viandas =>  this.viandas = viandas);
-    console.log(this.total);
+    cart.listCart.subscribe((observable:Vianda[]) => this. viandasInCart=observable);
+
     
     
     }
     
-  estaVacio():boolean{
-    
-    return this.viandas[0] != null;
+  isEmpty():boolean{
+    return this.viandasInCart[0] != null;
   }
 
 
-actualizarTotal():void{
+uptadateTotal():number{
 
-  if(!this.estaVacio){
-    for(let i =0; i<this.viandas.length;i++){
-      if(this.viandas[i].offer)
-        this.total+= this.viandas[i].priceOffer
-      else
-        this.total+=this.viandas[i].price;
-    }
-    this.haveProd = true;
+  let total = 0;
+  for (let vianda in this.viandasInCart) {
+    if(!this.viandasInCart[vianda].offer)
+      total+=this.viandasInCart[vianda].price * this.viandasInCart[vianda].quantity;
+    else
+      total+=this.viandasInCart[vianda].priceOffer * this.viandasInCart[vianda].quantity;
   }
+    return total;
   
 }
 
@@ -56,7 +46,6 @@ actualizarTotal():void{
 
   removeVianda(vianda:Vianda):void{
     this.cart.removeViandainCart(vianda);
-    console.log("mis viandas", this.viandas)
   }
 
 }
