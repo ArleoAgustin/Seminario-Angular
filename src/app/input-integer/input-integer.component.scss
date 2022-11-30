@@ -14,10 +14,21 @@ button:hover{
 
 #reducir {
     background-color: rgba(228, 44, 44, 0.775);
+
+}
+
+#reducir:hover{
+    transition: all 500ms ease;
+    background-color: rgba(219, 90, 90, 0.775);
 }
 
 #aumentar{
     background-color: rgba(20, 140, 20, 0.767);
+}
+
+#aumentar:hover{
+    transition: all 500ms ease;
+    background-color: rgba(74, 138, 74, 0.767);
 }
 
 input{

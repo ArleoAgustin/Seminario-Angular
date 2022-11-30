@@ -52,6 +52,9 @@ button{
 
 button:hover{
     cursor: pointer;
+    transition: all 500ms ease;
+    background-color: #61bc61eb;
+    border: none 1px solid #61bc61eb;
 }
 
 .offer{
